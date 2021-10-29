@@ -1,5 +1,6 @@
 package DroneSimulator;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
@@ -10,8 +11,12 @@ import java.util.Random;
  * @author joshh
  *
  */
-public class DroneArena {
+public class DroneArena implements Serializable {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7162694793744161960L;
 	int xSize, ySize;
 	List<Drone> drones;
 	private Random randomGenerator = new Random();
@@ -27,7 +32,7 @@ public class DroneArena {
 		xSize = x;
 		ySize = y;
 		drones = new ArrayList<>();
-		for (int i = 0; i < 10; i++)
+		//for (int i = 0; i < 10; i++)
 			addDrone();
 	}
 
@@ -39,7 +44,7 @@ public class DroneArena {
 		if (drones.size() < xSize * ySize) {
 			// creates a new drone at a random position
 			Drone newDrone = new Drone(randomGenerator.nextInt(xSize - 1), randomGenerator.nextInt(ySize - 1),
-					randomGenerator.nextInt(4));
+					Direction.getRandom());
 
 			// makes sure that the position is not already used by a drone, if so
 			// it will continue to make generate new coordinates until it has found
@@ -83,9 +88,7 @@ public class DroneArena {
 
 				// if a drone is currently in the position of another drone, the it will change
 				// it's direction and move it there
-				drone.setDirection(drone.getDirection() + 1);
-				if (drone.getDirection() == Direction.West.ordinal())
-					drone.setDirection(Direction.North.ordinal());
+				drone.setDirection(Direction.getNext(drone.getDirection()));
 
 			}
 			drone.DisplayDrone(c);

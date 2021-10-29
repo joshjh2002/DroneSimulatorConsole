@@ -1,13 +1,20 @@
 package DroneSimulator;
 
+import java.io.Serializable;
+
 /**
  * Class used to instantiate a drone
  * 
  * @author joshh
  *
  */
-public class Drone {
+public class Drone  implements Serializable{
+	
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 9159655539969594695L;
 	static int lastID = 0;
 	private int x, y, id, direction;
 
