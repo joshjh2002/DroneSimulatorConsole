@@ -154,15 +154,23 @@ public class DroneInterface {
 	 * Draws all the drones to the screen
 	 */
 	public void DoDisplay() {
-		// Each frame requires a new canvas of the same size as the arena
-		ConsoleCanvas c = new ConsoleCanvas(droneArena.xSize, droneArena.ySize);
+		for (int i = 0; i < 10; i++) {
+			// Each frame requires a new canvas of the same size as the arena
+			ConsoleCanvas c = new ConsoleCanvas(droneArena.xSize, droneArena.ySize);
 
-		// calls showDrone in the DroneArena class (will draw each done to the canvas at
-		// their position)
-		droneArena.showDrones(c);
+			// calls showDrone in the DroneArena class (will draw each done to the canvas at
+			// their position)
+			droneArena.showDrones(c);
 
-		// will print the canvas to the screen using it's toString function
-		System.out.print(c.toString());
+			// will print the canvas to the screen using it's toString function
+			System.out.print(c.toString());
+			try {
+				Thread.sleep(500);
+			} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 	}
 
 }

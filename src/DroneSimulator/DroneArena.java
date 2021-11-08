@@ -43,7 +43,7 @@ public class DroneArena implements Serializable {
 		// if there are more drones than cells, then it will not add a new drone
 		if (drones.size() < xSize * ySize) {
 			// creates a new drone at a random position
-			Drone newDrone = new Drone(randomGenerator.nextInt(xSize - 1), randomGenerator.nextInt(ySize - 1),
+			Drone newDrone = new Drone(randomGenerator.nextInt(xSize - 3) + 1, randomGenerator.nextInt(ySize - 3) + 1,
 					Direction.getRandom());
 
 			// makes sure that the position is not already used by a drone, if so
